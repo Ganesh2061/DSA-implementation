@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>  // Include this for malloc and NULL
+
+struct node {
+    int data;
+    struct node *left;
+    struct node *right;
+};
+
+struct node* creatnode(int data) {
+    struct node *n;
+    n = (struct node*)malloc(sizeof(struct node));
+    n->data = data;
+    n->left = NULL;  // Correct the typo here
+    n->right = NULL; // Correct the typo here
+    return n;
+}
+
+void linknode(struct node *a, struct node *c1, struct node *c2) {
+    a->left = c1;
+    a->right = c2;
+}
+
+struct node* traverse(struct node *tree) {
+    return tree; // Return the address of the node
+}
+
+int main() {
+    struct node *p = creatnode(1);
+    struct node *p1 = creatnode(2);
+    struct node *p2 = creatnode(3);
+    linknode(p, p1, p2);
+
+    printf("%d\n", traverse(p)->data); // Use ->data to access the data of the node
+    printf("%d\n", traverse(p->left)->data);
+    printf("%d\n", traverse(p->right)->data);
+
+    return 0;
+}
